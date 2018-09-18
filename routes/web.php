@@ -23,9 +23,7 @@ Route::get('/kelas', function () {
     return view('page.kelas.index');
 });
 
-Route::get('/mapel', function () {
-    return view('page.mapel.index');
-});
+Route::resource('mapel', 'MapelController');
 
 Route::get('/piket', function () {
     return view('page.piket.index');

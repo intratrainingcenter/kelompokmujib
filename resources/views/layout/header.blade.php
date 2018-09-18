@@ -500,7 +500,7 @@
           </a>
         </li>
         <li>
-          <a href="/mapel">
+          <a href="{{route('mapel.index')}}">
             <i class="fa fa-pie-chart"></i><span>Data Mata Pelajaran</span>
           </a>
         </li>
