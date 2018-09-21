@@ -34,16 +34,16 @@
                   <th width="150px">Opsi</th>
                 </thead>
                 <tbody>
-                  {{-- @foreach ($data as $item)
+                  @foreach ($data as $item)
                   <tr>
-                    <td>{{1++}}</td>
+                    <td>{{$no++}}</td>
                     <td>{{$item->nama_mapel}}</td>
                     <td>
-                      <button class="btn btn-warning">Edit</button>
-                      <button class="btn btn-danger">Hapus</button>
+                      <a href="{{route('mapel.edit', ['id' => $item->id])}}" class="btn btn-warning">Edit</a>
+                      <button class="btn btn-danger" data-toggle="modal" data-target="#modaldel{{$item->id}}">Hapus</button>
                     </td>
                   </tr>
-                  @endforeach --}}
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -55,6 +55,33 @@
       </div>
       <!-- /.row -->
     </section>
+
+    <!-- Modal -->
+    @foreach ($data as $item)
+    <div class="modal fade" id="modaldel{{$item->id}}" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Konfirmasi</h4>
+          </div>
+          <div class="modal-body">
+            <p>And yakin ingin menhapus mata pelajaran {{$item->nama_mapel}} ?</p>
+          </div>
+          <div class="modal-footer">
+            {!! Form::open(['route' => ['mapel.destroy', $item->id], 'method' => 'delete']) !!}
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            {{ Form::submit('Hapus', ['class' => 'btn btn-danger pull-right']) }}
+            {!! Form::close() !!}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    @endforeach
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

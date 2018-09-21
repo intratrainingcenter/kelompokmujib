@@ -24,7 +24,7 @@ Route::get('/kelas', function () {
 });
 
 Route::resource('mapel', 'MapelController');
-
+Route::delete('mapel/{id}', 'Testcontroller@destroy')->name('mapel_delete');
 Route::get('/piket', function () {
     return view('page.piket.index');
 });

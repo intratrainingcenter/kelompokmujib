@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mapel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MapelController extends Controller
 {
@@ -13,7 +15,10 @@ class MapelController extends Controller
      */
     public function index()
     {
-        return view('page.mapel.index');
+        $data = Mapel::all()->sortByDesc('id');
+        $no = 1;
+
+        return view('page.mapel.index', compact('data', 'no'));
     }
 
     /**
@@ -34,7 +39,10 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        return view('page.mapel.index');
+        $data = new Mapel;
+        $data->nama_mapel = $request->nama_mapel;
+        $data->save();
+        return redirect()->route('mapel.index');
     }
 
     /**
@@ -56,7 +64,9 @@ class MapelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Mapel::where('id', $id)->first();
+
+        return view('page.mapel.edit', compact('data'));
     }
 
     /**
@@ -68,7 +78,10 @@ class MapelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Mapel::where('id', $id)->first();
+        $data->nama_mapel = $request->nama_mapel;
+        $data->save();
+        return redirect()->route('mapel.index');
     }
 
     /**
@@ -79,6 +92,8 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Mapel::find($id);
+        $data->delete();
+        return redirect()->route('mapel.index');
     }
 }
