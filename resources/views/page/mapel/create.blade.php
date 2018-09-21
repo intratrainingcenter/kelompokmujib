@@ -31,7 +31,8 @@
                     {!! Form::open(['route' => 'mapel.store']) !!}
                     {{ Form::label('nama_mapel', 'Nama Mata Pelajaran', ['class' => 'control-label']) }}
                     {{ Form::text('nama_mapel', '', array_merge(['class' => 'form-control','id' => 'nama_mapel'])) }} <br>
-                    {{ Form::submit('Tambah', ['class' => 'btn btn-success pull-right']) }}
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-primary pull-right']) }}
+                    {{ link_to_route('mapel.index', $title = 'Batal', $parameters = [], $attributes = ['class' => 'btn btn-danger pull-right', 'style' => 'margin-right:10px']) }}
                     {!! Form::close() !!}
                 </div>
             </div>
