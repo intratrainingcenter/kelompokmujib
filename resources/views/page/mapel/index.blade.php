@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@extends('page.mapel.additional')
 
 @section('title')
     Data Mata Pelajaran
@@ -72,7 +73,7 @@
           </div>
           <div class="modal-footer">
             {!! Form::open(['route' => ['mapel.destroy', $item->id], 'method' => 'delete']) !!}
-            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            {{ Form::button('Batal', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) }}
             {{ Form::submit('Hapus', ['class' => 'btn btn-danger pull-right']) }}
             {!! Form::close() !!}
           </div>
