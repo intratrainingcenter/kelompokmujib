@@ -42,7 +42,7 @@ class MapelController extends Controller
         $data = new Mapel;
         $data->nama_mapel = $request->nama_mapel;
         $data->save();
-        return redirect()->route('mapel.index');
+        return redirect()->route('mapel.index')->with('notifberhasil', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -81,7 +81,7 @@ class MapelController extends Controller
         $data = Mapel::where('id', $id)->first();
         $data->nama_mapel = $request->nama_mapel;
         $data->save();
-        return redirect()->route('mapel.index');
+        return redirect()->route('mapel.index')->with('notifberhasil', 'Data Berhasil Diedit!');
     }
 
     /**
@@ -94,6 +94,6 @@ class MapelController extends Controller
     {
         $data = Mapel::find($id);
         $data->delete();
-        return redirect()->route('mapel.index');
+        return redirect()->route('mapel.index')->with('notifberhasil', 'Data Berhasil Dihapus!');
     }
 }

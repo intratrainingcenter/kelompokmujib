@@ -20,6 +20,14 @@
     </section>
     <!-- Main content -->
     <section class="content">
+        @if (session('notifberhasil'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-success">
+            {{session('notifberhasil')}}
+          </div>
+        </div>
+      @endif
+
       <div class="row">
         <div class="col-xs-12">
           <div class="box">

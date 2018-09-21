@@ -10,12 +10,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Data Mata Pelajaran
+        Edit Data Mata Pelajaran
       </h1>
       <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
         <li >Data Mata Pelajaran</li>
-        <li class="active">Tambah Data Mata Pelajaran</li>
+        <li class="active">Edit Data Mata Pelajaran</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -28,7 +28,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="form-group">
-                    {!! Form::open(['route' => ['mapel.update', $data->id], 'method' => 'patch']) !!}
+                    {!! Form::open(['route' => ['mapel.update', $data->id], 'method' => 'patch', 'id' => 'contoh']) !!}
                     {{ Form::label('nama_mapel', 'Nama Mata Pelajaran', ['class' => 'control-label']) }}
                     {{ Form::text('nama_mapel', $data->nama_mapel, array_merge(['class' => 'form-control','id' => 'nama_mapel'])) }} <br>
                     {{ Form::submit('Simpan', ['class' => 'btn btn-success pull-right']) }}
