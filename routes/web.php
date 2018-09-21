@@ -23,10 +23,8 @@ Route::get('/kelas', function () {
     return view('page.kelas.index');
 });
 
-Route::get('/mapel', function () {
-    return view('page.mapel.index');
-});
-
+Route::resource('mapel', 'MapelController');
+Route::delete('mapel/{id}', 'Testcontroller@destroy')->name('mapel_delete');
 Route::get('/piket', function () {
     return view('page.piket.index');
 });
