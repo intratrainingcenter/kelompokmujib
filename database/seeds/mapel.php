@@ -12,6 +12,7 @@ class mapel extends Seeder
     public function run()
     {
         DB::table('mapels')->insert([
+            'kode_mapel' => 'MAPEL01',
             'nama_mapel' => str_random(10),
         ]);
     }

@@ -505,6 +505,11 @@
           </a>
         </li>
         <li>
+          <a href="{{route('jadwal.index')}}">
+            <i class="fa fa-pie-chart"></i><span>Jadwal Pelajaran</span>
+          </a>
+        </li>
+        <li>
           <a href="/piket">
             <i class="fa fa-laptop"></i><span>Data Piket</span>
           </a>
