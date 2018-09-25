@@ -506,7 +506,7 @@
         </li>
         <li>
           <a href="{{route('jadwal.index')}}">
-            <i class="fa fa-pie-chart"></i><span>Jadwal Pelajaran</span>
+            <i class="fa fa-book"></i><span>Jadwal Pelajaran</span>
           </a>
         </li>
         <li>

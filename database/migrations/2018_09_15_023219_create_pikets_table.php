@@ -15,6 +15,9 @@ class CreatePiketsTable extends Migration
     {
         Schema::create('pikets', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('kode_kelas');
+            $table->string('nis');
+            $table->enum('hari',['Senin','Selasa','Rabu','Kamis','Jum`at','Sabtu']);
             $table->timestamps();
         });
     }

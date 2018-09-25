@@ -13,5 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(mapel::class);
         $this->call(kelas::class);
+        $this->call(piket::class);
+        $this->call(siswa::class);
     }
 }
