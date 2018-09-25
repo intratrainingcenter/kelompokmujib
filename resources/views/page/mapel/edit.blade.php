@@ -31,11 +31,11 @@
                 {!! Form::open(['route' => ['mapel.update', $data->id], 'method' => 'patch']) !!}
                 <div class="form-group">
                   {{ Form::label('kode_mapel', 'Kode Mata Pelajaran', ['class' => 'control-label']) }}
-                  {{ Form::text('kode_mapel', '', ['class' => 'form-control','id' => 'kode_mapel', 'required' => true]) }}
+                  {{ Form::text('kode_mapel', $data->kode_mapel, ['class' => 'form-control','id' => 'kode_mapel', 'readonly' => true]) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('nama_mapel', 'Nama Mata Pelajaran', ['class' => 'control-label']) }}
-                  {{ Form::text('nama_mapel', '', ['class' => 'form-control','id' => 'nama_mapel', 'required' => true]) }}
+                  {{ Form::text('nama_mapel', $data->nama_mapel, ['class' => 'form-control','id' => 'nama_mapel', 'required' => true]) }}
                 </div>
                 {{ Form::submit('Simpan', ['class' => 'btn btn-primary pull-right']) }}
                 {{ link_to_route('mapel.index', $title = 'Batal', $parameters = [], $attributes = ['class' => 'btn btn-danger pull-right', 'style' => 'margin-right:10px']) }}

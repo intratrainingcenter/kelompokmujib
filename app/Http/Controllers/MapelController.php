@@ -89,7 +89,7 @@ class MapelController extends Controller
         $data->kode_mapel = $request->kode_mapel;
         $data->nama_mapel = $request->nama_mapel;
         $data->save();
-        return redirect()->route('mapel.index')->with('notifberhasil', 'Data Berhasil Diedit!');
+        return redirect()->route('mapel.index')->with('notifberhasil', 'Berhasil! Data Berhasil Diedit!');
     }
 
     /**
