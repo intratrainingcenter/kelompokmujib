@@ -28,18 +28,18 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="form-group">
-                    {!! Form::open(['route' => 'mapel.store']) !!}
-                    <div class="form-group">
-                      {{ Form::label('kode_mapel', 'Kode Mata Pelajaran', ['class' => 'control-label']) }}
-                      {{ Form::text('kode_mapel', '', ['class' => 'form-control','id' => 'kode_mapel']) }}
-                    </div>
-                    <div class="form-group">
-                      {{ Form::label('nama_mapel', 'Nama Mata Pelajaran', ['class' => 'control-label']) }}
-                      {{ Form::text('nama_mapel', '', ['class' => 'form-control','id' => 'nama_mapel']) }}
-                    </div>
-                    {{ Form::submit('Simpan', ['class' => 'btn btn-primary pull-right']) }}
-                    {{ link_to_route('mapel.index', $title = 'Batal', $parameters = [], $attributes = ['class' => 'btn btn-danger pull-right', 'style' => 'margin-right:10px']) }}
-                    {!! Form::close() !!}
+                  {!! Form::open(['route' => 'mapel.store']) !!}
+                  <div class="form-group">
+                    {{ Form::label('kode_mapel', 'Kode Mata Pelajaran', ['class' => 'control-label']) }}
+                    {{ Form::text('kode_mapel', '', ['class' => 'form-control','id' => 'kode_mapel', 'required' => true]) }}
+                  </div>
+                  <div class="form-group">
+                    {{ Form::label('nama_mapel', 'Nama Mata Pelajaran', ['class' => 'control-label']) }}
+                    {{ Form::text('nama_mapel', '', ['class' => 'form-control','id' => 'nama_mapel', 'required' => true]) }}
+                  </div>
+                  {{ Form::submit('Simpan', ['class' => 'btn btn-primary pull-right']) }}
+                  {{ link_to_route('mapel.index', $title = 'Batal', $parameters = [], $attributes = ['class' => 'btn btn-danger pull-right', 'style' => 'margin-right:10px']) }}
+                  {!! Form::close() !!}
                 </div>
             </div>
             <!-- /.box-body -->

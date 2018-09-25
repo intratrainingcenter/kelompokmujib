@@ -20,6 +20,20 @@
     </section>
     <!-- Main content -->
     <section class="content">
+        @if (session('notifberhasil'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('notifberhasil')}}
+          </div>
+        </div>
+        @elseif(session('notifgagal'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('notifgagal')}}
+          </div>
+        </div>
+      @endif
+
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -32,7 +46,7 @@
                 <thead>
                   <th width="100px">No</th>
                   <th width="150px">Kode Mapel</th>
-                  <th>Nama</th>
+                  <th>Nama Mapel</th>
                   <th width="150px">Opsi</th>
                 </thead>
                 <tbody>
