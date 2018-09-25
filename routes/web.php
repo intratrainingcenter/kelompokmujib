@@ -25,9 +25,7 @@ Route::get('/kelas', function () {
 
 Route::resource('mapel', 'MapelController');
 Route::resource('jadwal', 'JadwalPelajaranController');
-Route::get('/piket', function () {
-    return view('page.piket.index');
-});
+Route::get('jadwal/kelas', 'JadwalPelajaranController@showajax')->name('jadwal_show');
 
 Route::get('/absen', function () {
     return view('page.absen.index');

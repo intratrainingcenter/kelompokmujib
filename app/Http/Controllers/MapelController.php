@@ -102,6 +102,6 @@ class MapelController extends Controller
     {
         $data = Mapel::find($id);
         $data->delete();
-        return redirect()->route('mapel.index')->with('notifberhasil', 'Data Berhasil Dihapus!');
+        return redirect()->route('mapel.index')->with('notifberhasil', 'Berhasil! Data Berhasil Dihapus!');
     }
 }
