@@ -22,8 +22,14 @@
     <section class="content">
         @if (session('notifberhasil'))
         <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
-          <div class="notif alert alert-success">
+          <div class="notif alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             {{session('notifberhasil')}}
+          </div>
+        </div>
+        @elseif(session('notifgagal'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('notifgagal')}}
           </div>
         </div>
       @endif
@@ -39,13 +45,15 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <th width="100px">No</th>
-                  <th>Nama</th>
+                  <th width="150px">Kode Mapel</th>
+                  <th>Nama Mapel</th>
                   <th width="150px">Opsi</th>
                 </thead>
                 <tbody>
                   @foreach ($data as $item)
                   <tr>
                     <td>{{$no++}}</td>
+                    <td>{{$item->kode_mapel}}</td>
                     <td>{{$item->nama_mapel}}</td>
                     <td>
                       <a href="{{route('mapel.edit', ['id' => $item->id])}}" class="btn btn-warning">Edit</a>

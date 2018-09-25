@@ -39,10 +39,17 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Mapel;
-        $data->nama_mapel = $request->nama_mapel;
-        $data->save();
-        return redirect()->route('mapel.index')->with('notifberhasil', 'Data Berhasil Ditambahkan!');
+        $check = Mapel::where('kode_mapel', $request->kode_mapel)->doesntExist();
+        if ($check) {
+            $data = new Mapel;
+            $data->kode_mapel = $request->kode_mapel;
+            $data->nama_mapel = $request->nama_mapel;
+            $data->save();
+            return redirect()->route('mapel.index')->with('notifberhasil', 'Berhasil! Data Berhasil Ditambahkan');
+        } else {
+            return redirect()->route('mapel.index')->with('notifgagal', 'Gagal! Kode Mata Pelajaran Sudah Ada');
+        }
+        
     }
 
     /**
@@ -79,6 +86,7 @@ class MapelController extends Controller
     public function update(Request $request, $id)
     {
         $data = Mapel::where('id', $id)->first();
+        $data->kode_mapel = $request->kode_mapel;
         $data->nama_mapel = $request->nama_mapel;
         $data->save();
         return redirect()->route('mapel.index')->with('notifberhasil', 'Data Berhasil Diedit!');

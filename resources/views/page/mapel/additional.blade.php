@@ -18,6 +18,7 @@
             'autoWidth'   : false
         });
         setTimeout(function(){ $('.notifberhasil').hide(1000); }, 3000);
+        setTimeout(function(){ $('.notifgagal').hide(1000); }, 3000);
         
     })
     </script>

@@ -27,14 +27,20 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="form-group">
+                {!! Form::open(['route' => ['mapel.update', $data->id], 'method' => 'patch']) !!}
                 <div class="form-group">
-                    {!! Form::open(['route' => ['mapel.update', $data->id], 'method' => 'patch', 'id' => 'contoh']) !!}
-                    {{ Form::label('nama_mapel', 'Nama Mata Pelajaran', ['class' => 'control-label']) }}
-                    {{ Form::text('nama_mapel', $data->nama_mapel, array_merge(['class' => 'form-control','id' => 'nama_mapel'])) }} <br>
-                    {{ Form::submit('Simpan', ['class' => 'btn btn-success pull-right']) }}
-                    {{ link_to_route('mapel.index', $title = 'Batal', $parameters = [], $attributes = ['class' => 'btn btn-danger pull-right', 'style' => 'margin-right:10px']) }}
-                    {!! Form::close() !!}
+                  {{ Form::label('kode_mapel', 'Kode Mata Pelajaran', ['class' => 'control-label']) }}
+                  {{ Form::text('kode_mapel', '', ['class' => 'form-control','id' => 'kode_mapel']) }}
                 </div>
+                <div class="form-group">
+                  {{ Form::label('nama_mapel', 'Nama Mata Pelajaran', ['class' => 'control-label']) }}
+                  {{ Form::text('nama_mapel', '', ['class' => 'form-control','id' => 'nama_mapel']) }}
+                </div>
+                {{ Form::submit('Simpan', ['class' => 'btn btn-primary pull-right']) }}
+                {{ link_to_route('mapel.index', $title = 'Batal', $parameters = [], $attributes = ['class' => 'btn btn-danger pull-right', 'style' => 'margin-right:10px']) }}
+                {!! Form::close() !!}
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
