@@ -17,7 +17,7 @@ class CreateSiswasTable extends Migration
             $table->increments('id');
             $table->integer('nis');
             $table->string('nama');
-            $table->string('kelas');
+            $table->string('kode_kelas');
             $table->timestamps();
         });
     }
