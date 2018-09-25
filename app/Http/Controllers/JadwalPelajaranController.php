@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Kelasmodel;
 use Illuminate\Http\Request;
+use App\Models\Jadwal;
+use Illuminate\Support\Facades\DB;
 
-class KelasmodelController extends Controller
+class JadwalPelajaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,10 @@ class KelasmodelController extends Controller
      */
     public function index()
     {
-        //
+        $data = Jadwal::all()->sortByDesc('id');
+        $no = 1;
+
+        return view('page.jadwal.index', compact('data', 'no'));
     }
 
     /**
@@ -41,10 +45,10 @@ class KelasmodelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Kelasmodel  $kelasmodel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Kelasmodel $kelasmodel)
+    public function show($id)
     {
         //
     }
@@ -52,10 +56,10 @@ class KelasmodelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Kelasmodel  $kelasmodel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kelasmodel $kelasmodel)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +68,10 @@ class KelasmodelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Kelasmodel  $kelasmodel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelasmodel $kelasmodel)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +79,10 @@ class KelasmodelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Kelasmodel  $kelasmodel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelasmodel $kelasmodel)
+    public function destroy($id)
     {
         //
     }

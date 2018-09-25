@@ -1,8 +1,8 @@
 @extends('layout.layout')
-@extends('page.mapel.additional')
+@extends('page.jadwal.additional')
 
 @section('title')
-    Data Mata Pelajaran
+    Data Jadwal Pelajaran
 @endsection
 
 @section('content')
@@ -11,11 +11,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Mata Pelajaran
+        Data Jadwal Pelajaran
       </h1>
       <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data Mata Pelajaran</li>
+        <li class="active">Data Jadwal Pelajaran</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -24,27 +24,29 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <a href="{{route('mapel.create')}}" class="btn btn-success pull-right">Tambah</a>
+              <a href="{{route('jadwal.create')}}" class="btn btn-success pull-right">Tambah</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <th width="100px">No</th>
-                  <th width="150px">Kode Mapel</th>
-                  <th>Nama</th>
+                  <th>Kelas</th>
+                  <th>Hari</th>
+                  <th width="120px">Kode Pelajaran</th>
+                  <th>Pelajaran</th>
                   <th width="150px">Opsi</th>
                 </thead>
                 <tbody>
                   @foreach ($data as $item)
                   <tr>
-                    <td>{{$no++}}</td>
+                    {{-- <td>{{$no++}}</td>
                     <td>{{$item->kode_mapel}}</td>
                     <td>{{$item->nama_mapel}}</td>
                     <td>
                       <a href="{{route('mapel.edit', ['id' => $item->id])}}" class="btn btn-warning">Edit</a>
                       <button class="btn btn-danger" data-toggle="modal" data-target="#modaldel{{$item->id}}">Hapus</button>
-                    </td>
+                    </td> --}}
                   </tr>
                   @endforeach
                 </tbody>
@@ -60,7 +62,7 @@
     </section>
 
     <!-- Modal -->
-    @foreach ($data as $item)
+    {{-- @foreach ($data as $item)
     <div class="modal fade" id="modaldel{{$item->id}}" role="dialog">
       <div class="modal-dialog">
       
@@ -83,7 +85,7 @@
 
       </div>
     </div>
-    @endforeach
+    @endforeach --}}
 
     <!-- /.content -->
   </div>
