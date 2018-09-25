@@ -14,7 +14,9 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+      $table = Siswa::all();
+
+      return view('page.siswa.index', compact('table'));
     }
 
     /**
@@ -24,7 +26,8 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+
+      return view('page.siswa.insert');
     }
 
     /**
@@ -35,7 +38,14 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data = new Siswa;
+      $data->nis = '123123123';
+      $data->nama = $request->nama;
+      $data->kode_kelas = $request->kelas;
+      $data->jenis_kelamin = $request->jenis_kelamin;
+      $data->save();
+
+      return redirect()->route('siswa.index')->with('notifberhasil', 'Data Siswa Berhasil Ditambahkan!');
     }
 
     /**
@@ -55,9 +65,12 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit($id)
     {
-        //
+      $table = Siswa::where('id', $id)->first();
+      // dd($table);
+
+      return view('page.siswa.edit', compact('table'));
     }
 
     /**
@@ -67,9 +80,15 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Siswa $siswa)
+    public function update(Request $request, $id)
     {
-        //
+      // dd($id, $request);
+      $table = Siswa::where('id', $id)->first();
+      $table->nama = $request->nama;
+      $table->jenis_kelamin = $request->jenis_kelamin;
+      $table->kode_kelas = $request->kelas;
+      $table->save();
+      return redirect()->route('siswa.index')->with('notifberhasil', 'Data Berhasil Diedit');
     }
 
     /**
@@ -78,8 +97,11 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Siswa $siswa)
+    public function destroy($id)
     {
-        //
+      $table = Siswa::find($id);
+      $table->delete();
+
+      return redirect()->route('siswa.index')->with('notifberhasil', 'Data Siswa "'.$table->nama.'" Berhasil Dihapus!');
     }
 }

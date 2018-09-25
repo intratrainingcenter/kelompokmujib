@@ -15,9 +15,10 @@ Route::get('/', function () {
     return view('layout.index');
 });
 
-Route::get('/siswa', function () {
-    return view('page.siswa.index');
-});
+Route::resource('siswa', 'SiswaController');
+// Route::delete('/HapusSiswa/{id}', 'SiswaController@hapus');
+// Route::get('/InsertSiswa', 'SiswaController@create')->name('insertSiswa');
+// Route::post('/StoreSiswa', 'SiswaController@store')->name('storeSiswa');
 
 Route::get('/kelas', function () {
     return view('page.kelas.index');
