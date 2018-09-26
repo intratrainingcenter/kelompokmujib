@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
           {{Form::label('kelas', 'Kelas')}}
-          {{Form::select('kelas', ['P1' => 'Opsi 1', 'P2' => 'Opsi 2'], $table->kode_kelas, ['class' => 'form-control'])}}
+          {{Form::select('kelas', $kelas, $table->kode_kelas, ['class' => 'form-control'])}}
         </div>
 
         {{Form::submit('Simpan', ['class' => 'btn btn-primary pull-right'])}}

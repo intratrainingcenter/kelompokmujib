@@ -96,9 +96,14 @@ class SiswaController extends Controller
     public function edit($id)
     {
       $table = Siswa::where('id', $id)->first();
+      $tbl_kelas = Kelas::all();
       // dd($table);
+      $kelas = [];
+      foreach ($tbl_kelas as $data) {
+        $kelas[$data->kode_kelas]= $data->nama_kelas;
+      }
 
-      return view('page.siswa.edit', compact('table'));
+      return view('page.siswa.edit', compact('table', 'kelas'));
     }
 
     /**
