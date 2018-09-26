@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -15,9 +16,14 @@ class KelasController extends Controller
      */
     public function index()
     {
-      $table = Kelas::all();
+      $tbl_kelas = Kelas::all();
+      foreach ($tbl_kelas as $dat_kelas) {
+        $conSiswa[$dat_kelas->id] = Siswa::where('kode_kelas', $dat_kelas->kode_kelas)->count();
+      }
+      // dd($conSiswa[9]);
+      $table = $tbl_kelas;
 
-      return view('page.kelas.index', compact('table'));
+      return view('page.kelas.index', compact('table', 'conSiswa'));
     }
 
     /**
@@ -37,6 +43,7 @@ class KelasController extends Controller
       }else {
         $new_kode = 'KD'.$date.$id ;
       }
+
       return view('page.kelas.insert', compact('new_kode'));
     }
 
@@ -48,10 +55,16 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-      $data = new Kelas;
-      $data->kode_kelas = $request->kode_kelas;
-      $data->nama_kelas = $request->nama_kelas;
-      $data->save();
+      $check = Kelas::where('kode_kelas', $request->kode_kelas)->first();
+
+      if($check == NULL){
+        $data = new Kelas;
+        $data->kode_kelas = $request->kode_kelas;
+        $data->nama_kelas = $request->nama_kelas;
+        $data->save();
+      }else{
+         return redirect()->route('kelas.index')->with('notifwarning', 'Data Sudah Ada!');
+      }
 
       return redirect()->route('kelas.index')->with('notifberhasil', 'Data Siswa Berhasil Ditambahkan!');
     }
