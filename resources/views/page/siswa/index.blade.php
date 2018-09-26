@@ -31,7 +31,7 @@
           </div>
         </div>
       @elseif (session('notifwarning'))
-        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifwarning">
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
           <div class="notif alert alert-warning">
             {{session('notifwarning')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
