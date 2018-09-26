@@ -15,13 +15,9 @@ Route::get('/', function () {
     return view('layout.index');
 });
 
-Route::get('/siswa', function () {
-    return view('page.siswa.index');
-});
+Route::resource('siswa', 'SiswaController');
 
-Route::get('/kelas', function () {
-    return view('page.kelas.index');
-});
+Route::resource('kelas', 'KelasController');
 
 Route::resource('mapel', 'MapelController');
 Route::resource('jadwal', 'JadwalPelajaranController');

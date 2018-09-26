@@ -18,6 +18,7 @@ class CreateSiswasTable extends Migration
             $table->integer('nis');
             $table->string('nama');
             $table->string('kode_kelas');
+            $table->enum('jenis_kelamin',['Laki-laki','Perempuan']);
             $table->timestamps();
         });
     }
