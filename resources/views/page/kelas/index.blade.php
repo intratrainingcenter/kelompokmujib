@@ -30,6 +30,14 @@
             </button>
           </div>
         </div>
+      @elseif (session('notifwarning'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-warning">
+            {{session('notifwarning')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
       @endif
       <div class="box">
         <div class="box-header">
@@ -54,7 +62,7 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{ $data->kode_kelas }}</td>
               <td>{{ $data->nama_kelas }}</td>
-              <td>NULL</td>
+              <td>{{ $conSiswa[$data->id] }} Siswa</td>
               <td>
                 <a href="{{route('kelas.edit',['id' => $data->id])}}" class="btn btn-warning">Edit</a>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#modaldel{{$data->id}}">Hapus</button>

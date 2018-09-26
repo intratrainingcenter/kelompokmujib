@@ -64,7 +64,11 @@
               <td>{{ $data->nis }}</td>
               <td>{{ $data->nama }}</td>
               <td>{{ $data->jenis_kelamin }}</td>
+              @if($data->get_kelas != NULL)
               <td>{{ $data->get_kelas->nama_kelas }}</td>
+              @else
+              <td><code>Tidak Ada Kelas</code></td>
+              @endif
               <td>
                 <a href="{{route('siswa.edit',['id' => $data->id])}}" class="btn btn-warning">Edit</a>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#modaldel{{$data->id}}">Hapus</button>
