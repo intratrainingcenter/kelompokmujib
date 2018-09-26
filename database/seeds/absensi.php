@@ -13,9 +13,8 @@ class absensi extends Seeder
     {
         DB::table('absensis')->insert([
             'nis' => 20181010,
-            'S' => 1,
-            'I' => 2,
-            'A' => 5,
+            'keterangan' => 'Alpa',
+            'created_at' => date('Y-m-d'),
         ]);
     }
 }

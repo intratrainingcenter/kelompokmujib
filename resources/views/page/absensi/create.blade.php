@@ -43,15 +43,15 @@
                     <div class="col-md-12">
                         <div class="col-sm-2">
                             {{ Form::label('sakit','', ['class' => 'control-label']) }}
-                            {{ Form::radio('absen', 'S') }}
+                            {{ Form::radio('keterangan', 'Sakit', true, ['disabled' => true]) }}
                         </div>
                         <div class="col-sm-2">
                             {{ Form::label('ijin','', ['class' => 'control-label']) }}
-                            {{ Form::radio('absen', 'I') }}
+                            {{ Form::radio('keterangan', 'Ijin', false, ['disabled' => true]) }}
                         </div>
                         <div class="col-sm-2">
                             {{ Form::label('alpa','', ['class' => 'control-label']) }}
-                            {{ Form::radio('absen', 'A') }}
+                            {{ Form::radio('keterangan', 'Alpa', false, ['disabled' => true]) }}
                         </div>
                     </div>
                   </div>
