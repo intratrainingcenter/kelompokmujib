@@ -28,6 +28,10 @@
         <!-- form start -->
         {!!Form::open(['route' => 'siswa.store', 'class' => 'box-body'])!!}
         <div class="form-group">
+          {!! Form::label('nis', 'NIS')!!}
+          {{Form::text('nis', $nis, array_merge(['class' => 'form-control', 'readonly']))}}
+        </div>
+        <div class="form-group">
           {!! Form::label('nama', 'Nama Siswa')!!}
           {{Form::text('nama', '', array_merge(['class' => 'form-control', 'required', 'placeholder' => 'Nama Siswa']))}}
         </div>
@@ -37,7 +41,7 @@
         </div>
         <div class="form-group">
           {{Form::label('kelas', 'Kelas')}}
-          {{Form::select('kelas', ['P1' => 'Opsi 1', 'P2' => 'Opsi 2'], null, ['class' => 'form-control'])}}
+          {{Form::select('kelas', $kelas, null, ['class' => 'form-control'])}}
         </div>
 
         {{Form::submit('Simpan', ['class' => 'btn btn-primary pull-right'])}}

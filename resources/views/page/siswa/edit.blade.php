@@ -29,6 +29,10 @@
 
         {!!Form::open(['route' => ['siswa.update', $table->id], 'method' => 'patch', 'class' => 'box-body'])!!}
         <div class="form-group">
+          {!! Form::label('nis', 'NIS')!!}
+          {{Form::text('nis', $table->nis, array_merge(['class' => 'form-control', 'readonly']))}}
+        </div>
+        <div class="form-group">
           {!! Form::label('nama', 'Nama Siswa')!!}
           {{Form::text('nama', $table->nama, array_merge(['class' => 'form-control',]))}}
         </div>
