@@ -16,13 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('siswa', 'SiswaController');
-// Route::delete('/HapusSiswa/{id}', 'SiswaController@hapus');
-// Route::get('/InsertSiswa', 'SiswaController@create')->name('insertSiswa');
-// Route::post('/StoreSiswa', 'SiswaController@store')->name('storeSiswa');
 
-Route::get('/kelas', function () {
-    return view('page.kelas.index');
-});
+Route::resource('kelas', 'KelasController');
+
 
 Route::get('/mapel', function () {
     return view('page.mapel.index');

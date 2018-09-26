@@ -88,7 +88,7 @@ class SiswaController extends Controller
       $table->jenis_kelamin = $request->jenis_kelamin;
       $table->kode_kelas = $request->kelas;
       $table->save();
-      return redirect()->route('siswa.index')->with('notifberhasil', 'Data Berhasil Diedit');
+      return redirect()->route('siswa.index')->with('notifberhasil', 'Data "'.$request->nis.'" Berhasil Di edit');
     }
 
     /**
@@ -102,6 +102,6 @@ class SiswaController extends Controller
       $table = Siswa::find($id);
       $table->delete();
 
-      return redirect()->route('siswa.index')->with('notifberhasil', 'Data Siswa "'.$table->nama.'" Berhasil Dihapus!');
+      return redirect()->route('siswa.index')->with('notifberhasil', 'Data "'.$table->nama.'" Berhasil Dihapus!');
     }
 }

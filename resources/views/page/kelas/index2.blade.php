@@ -1,27 +1,25 @@
 @extends('layout.layout')
 
 @section('title')
-    Admin LTE Laravel
+    Data Kelas
 @endsection
 
 @section('content')
-
-  <!-- Content Wrapper. Contains page content -->
+      <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        Data Kelas
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">Data Kelas</li>
       </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    {{-- <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-xs-6">
@@ -89,7 +87,7 @@
       <!-- Main row -->
       <div class="row">
         <!-- Left col -->
-        {{-- <section class="col-lg-7 connectedSortable">
+        <section class="col-lg-7 connectedSortable">
           <!-- Custom tabs (Charts with tabs)-->
           <div class="nav-tabs-custom">
             <!-- Tabs within a box -->
@@ -340,10 +338,10 @@
             </div>
           </div>
 
-        </section> --}}
+        </section>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        {{-- <section class="col-lg-5 connectedSortable">
+        <section class="col-lg-5 connectedSortable">
 
           <!-- Map box -->
           <div class="box box-solid bg-light-blue-gradient">
@@ -517,12 +515,12 @@
           </div>
           <!-- /.box -->
 
-        </section> --}}
+        </section>
         <!-- right col -->
       </div>
       <!-- /.row (main row) -->
 
-    </section>
+    </section> --}}
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
