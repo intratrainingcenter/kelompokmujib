@@ -12,8 +12,8 @@ class siswa extends Seeder
     public function run()
     {
         DB::table('siswas')->insert([
-            'nis' => 20181010,
-            'nama' => 'namaku',
+            'nis' => 20181020,
+            'nama' => 'namamu',
             'kode_kelas' => 'kelas01',
         ]);
     }

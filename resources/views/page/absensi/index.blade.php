@@ -43,25 +43,23 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                  <th width="100px">No</th>
-                  <th width="150px">NIS</th>
+                  <th width="50px">No</th>
+                  <th width="100px">NIS</th>
                   <th>Nama</th>
-                  <th>Sakit</th>
-                  <th>Ijin</th>
-                  <th>Alpa</th>
+                  <th width="100px">Keterangan</th>
+                  <th width="150px">Tanggal</th>
                   <th width="150px">Opsi</th>
                 </thead>
                 <tbody>
                   @foreach ($data as $item)
                   <tr>
-                    <td>{{$no++}}</td>
+                    <td>{{$no++}}.</td>
                     <td>{{$item->nis}}</td>
-                    <td>{{$item->siswa->nama}}</td>
-                    <td>{{$item->s}}</td>
-                    <td>{{$item->i}}</td>
-                    <td>{{$item->a}}</td>
+                    <td>{{$item->get_siswa->nama}}</td>
+                    <td>{{$item->keterangan}}</td>
+                    <td>{{date('d F Y',strtotime($item->created_at))}}</td>                    
                     <td>
-                      <a href="{{route('absensi.edit', ['id' => $item->id])}}" class="btn btn-warning">Edit</a>
+                      <button class="btn btn-info" data-toggle="modal" data-target="#modaldetil{{$item->id}}">Detil</button>
                       <button class="btn btn-danger" data-toggle="modal" data-target="#modaldel{{$item->id}}">Hapus</button>
                     </td>
                   </tr>
@@ -79,7 +77,65 @@
     </section>
 
     <!-- Modal -->
-    {{-- @foreach ($data as $item)
+    @foreach ($data as $item)
+
+    {{-- Modal Detil --}}
+    <div class="modal fade" id="modaldetil{{$item->id}}" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Detil</h4>
+          </div>
+              <div class="form-group col-md-12">
+                <div class="col-md-4">
+                  <label>NIS</label>
+                </div>
+                <div class="col-md-8">
+                  <p id="nis">{{$item->nis}}</p>
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <div class="col-md-4">
+                  <label>Nama</label>
+                </div>
+                <div class="col-md-8">
+                  <p id="nama">{{$item->get_siswa->nama}}</p>
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                  <div class="col-md-4">
+                    <label>Jenis Kelamin</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p id="jk">{{$item->get_siswa->jenis_kelamin}}</p>
+                  </div>
+              </div>
+              <div class="form-group col-md-12">
+                  <div class="col-md-4">
+                    <label>Tanggal</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p id="tgl">{{date('d F Y', strtotime($item->created_at))}}</p>
+                  </div>
+              </div>
+              <div class="form-group col-md-12">
+                  <div class="col-md-4">
+                    <label>Tidak Masuk Karena</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p id="ket">{{$item->keterangan}}</p>
+                  </div>
+              </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" data-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{-- Modal Delete --}}
     <div class="modal fade" id="modaldel{{$item->id}}" role="dialog">
       <div class="modal-dialog">
       
@@ -90,24 +146,26 @@
             <h4 class="modal-title">Konfirmasi</h4>
           </div>
           <div class="modal-body">
-            <p>And yakin ingin menhapus data piket?</p>
+            <p>And yakin ingin menghapus data absensi?</p>
             <table class="table table-bordered table-striped">
               <thead>
-                  <th>Kelas</th>
-                  <th>Petugas Piket</th>
-                  <th>Hari</th>
+                  <th>NIS</th>
+                  <th>Nama</th>
+                  <th>Keterangan</th>
+                  <th>Tanggal</th>
               </thead>
               <tbody>
                 <tr>
-                  <td>{{$item->kelas->nama_kelas}}</td>
-                  <td>{{$item->siswa->nama}}</td>
-                  <td>{{$item->hari}}</td>
+                  <td>{{$item->nis}}</td>
+                  <td>{{$item->get_siswa->nama}}</td>
+                  <td>{{$item->keterangan}}</td>
+                  <td>{{date('d F Y',strtotime($item->created_at))}}</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="modal-footer">
-            {!! Form::open(['route' => ['piket.destroy', $item->id], 'method' => 'delete']) !!}
+            {!! Form::open(['route' => ['absensi.destroy', $item->id], 'method' => 'delete']) !!}
             {{ Form::button('Batal', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) }}
             {{ Form::submit('Hapus', ['class' => 'btn btn-danger pull-right']) }}
             {!! Form::close() !!}
@@ -116,7 +174,8 @@
 
       </div>
     </div>
-    @endforeach --}}
+
+    @endforeach
 
     <!-- /.content -->
   </div>

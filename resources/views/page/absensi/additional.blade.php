@@ -20,7 +20,7 @@
         setTimeout(function(){ $('.notifberhasil').hide(1000); }, 3000);
         setTimeout(function(){ $('.notifgagal').hide(1000); }, 3000);
 
-        $("input[type='radio']").prop("disabled", true)
+        // $("input[type='radio']").prop("disabled", true)
 
         $("#kode_kelas").change(function(){
             let code = $("#kode_kelas").val();
@@ -28,7 +28,6 @@
             if (code == '') {
                 $("#nis").val('');
                 $("#nis").prop("disabled", true);
-                $("input[type='radio']").prop("checked", false);
                 $("input[type='radio']").prop("disabled", true);
             } else {
                 $.ajax({
