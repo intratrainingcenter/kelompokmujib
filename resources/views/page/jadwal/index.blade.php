@@ -53,9 +53,9 @@
                   @foreach ($data as $item)
                   <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$item->kelas->nama_kelas}}</td>
+                    <td>{{$item->get_kelas->nama_kelas}}</td>
                     <td>{{$item->hari}}</td>
-                    <td>{{$item->mapel->nama_mapel}}</td>
+                    <td>{{$item->get_mapel->nama_mapel}}</td>
                     <td>
                       <a href="{{route('jadwal.edit', ['id' => $item->id])}}" class="btn btn-warning">Edit</a>
                       <button class="btn btn-danger" data-toggle="modal" data-target="#modaldel{{$item->id}}">Hapus</button>
@@ -95,9 +95,9 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>{{$item->kelas->nama_kelas}}</td>
+                  <td>{{$item->get_kelas->nama_kelas}}</td>
                   <td>{{$item->hari}}</td>
-                  <td>{{$item->mapel->nama_mapel}}</td>
+                  <td>{{$item->get_mapel->nama_mapel}}</td>
                 </tr>
               </tbody>
             </table>

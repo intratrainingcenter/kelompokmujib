@@ -36,7 +36,7 @@
                   </div>
                   <div class="form-group">
                     {{ Form::label('nis', 'Nama Siswa', ['class' => 'control-label']) }}
-                    {{ Form::select('nis', [$data->nis => $data->siswa->nama], $data->nis, [ 'id' => 'nis', 'class' => 'form-control', 'required' => true]) }}
+                    {{ Form::select('nis', [$data->nis => $data->get_siswa->nama], $data->nis, [ 'id' => 'nis', 'class' => 'form-control', 'required' => true]) }}
                   </div>
                   <div class="form-group">
                     {{ Form::label('hari', 'Hari', ['class' => 'control-label']) }}
