@@ -510,12 +510,12 @@
           </a>
         </li>
         <li>
-          <a href="/piket">
+          <a href="{{route('piket.index')}}">
             <i class="fa fa-laptop"></i><span>Data Piket</span>
           </a>
         </li>
         <li>
-          <a href="/absen">
+          <a href="{{route('absensi.index')}}">
             <i class="fa fa-edit"></i> <span>Data Absen</span>
           </a>
         </li>

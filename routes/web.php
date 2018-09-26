@@ -26,7 +26,4 @@ Route::get('/kelas', function () {
 Route::resource('mapel', 'MapelController');
 Route::resource('jadwal', 'JadwalPelajaranController');
 Route::resource('piket', 'PiketController');
-
-Route::get('/absen', function () {
-    return view('page.absen.index');
-});
+Route::resource('absensi', 'AbsensiController');

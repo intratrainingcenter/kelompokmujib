@@ -1,5 +1,4 @@
 @section('header')   
-<meta name="_token" content="{{ csrf_token() }}"/>
   <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
 @endsection
@@ -10,8 +9,6 @@
 <script src="{{asset('template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script>
     $(document).ready(function(){
-
-    // DATATABLE
         $("#example1").DataTable({
             'paging'      : true,
             'lengthChange': true,
@@ -20,23 +17,23 @@
             'info'        : true,
             'autoWidth'   : false
         });
-
-    // ALERT NOTIF
         setTimeout(function(){ $('.notifberhasil').hide(1000); }, 3000);
         setTimeout(function(){ $('.notifgagal').hide(1000); }, 3000);
-        
-    // SHOW DATA SISWA ON CHANGE
+
+        $("input[type='radio']").prop("disabled", true)
+
         $("#kode_kelas").change(function(){
             let code = $("#kode_kelas").val();
             let result = '';
             if (code == '') {
                 $("#nis").val('');
-                $("#nis").prop('disabled', true);
-                $("#hari").prop('disabled', true);
+                $("#nis").prop("disabled", true);
+                $("input[type='radio']").prop("checked", false);
+                $("input[type='radio']").prop("disabled", true);
             } else {
                 $.ajax({
                     type: "GET",
-                    url: "{{URL::route('piket.show', ['param' => 'haha' ])}}",
+                    url: "{{URL::route('absensi.show', ['param' => 'haha' ])}}",
                     data: {
                         code: code,
                     },
@@ -47,15 +44,13 @@
                                 + val.nama + "</option>";
                         })
                         $("#nis").html("<option value=''>Pilih Siswa</option>" + result);
-                        $("#nis").prop('disabled', false);
-                        $("#hari").prop('disabled', false);
+                        $("#nis").prop("disabled", false)
+                        $("input[type='radio']").prop("disabled", false)
                     }
                 });
-                
-			
-                
             }
         })
+        
     })
     </script>
 @endsection

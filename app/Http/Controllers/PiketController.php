@@ -58,9 +58,9 @@ class PiketController extends Controller
      * @param  \App\Models\Piket  $piket
      * @return \Illuminate\Http\Response
      */
-    public function show($code)
+    public function show(Request $request,$param)
     {
-        $data = Siswa::where('kode_kelas', $code)->get();
+        $data = Siswa::where('kode_kelas', $request->code)->get();
         return response()->json($data);
     }
 
