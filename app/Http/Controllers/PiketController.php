@@ -16,7 +16,7 @@ class PiketController extends Controller
      */
     public function index()
     {
-        $data = Piket::orderBy('id', 'desc')->with('kelas')->with('siswa')->get();
+        $data = Piket::orderBy('id', 'desc')->with('get_kelas')->with('get_siswa')->get();
         $no = 1;
         return view('page.piket.index', compact('data', 'no'));
     }
@@ -49,7 +49,7 @@ class PiketController extends Controller
         $data->nis = $request->nis;
         $data->hari = $request->hari;
         $data->save();
-        return redirect()->route('piket.index');
+        return redirect()->route('piket.index')->with('notifberhaasil', 'Berhasil! Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -73,7 +73,7 @@ class PiketController extends Controller
     public function edit($id)
     {
         $kelas = Kelas::all();
-        $data = Piket::where('id', $id)->with('siswa')->first();
+        $data = Piket::where('id', $id)->with('get_siswa')->first();
         $selectkelas = [];
         foreach ($kelas as $item) {
             $selectkelas[$item->kode_kelas] = $item->nama_kelas;
@@ -88,9 +88,14 @@ class PiketController extends Controller
      * @param  \App\Models\Piket  $piket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Piket $piket)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Piket::find($id);
+        $data->kode_kelas = $request->kode_kelas;
+        $data->nis = $request->nis;
+        $data->hari = $request->hari;
+        $data->save();
+        return redirect()->route('piket.index')->with('notifberhasil', 'Berhasil! Data Berhasil Diedit');
     }
 
     /**
@@ -99,8 +104,9 @@ class PiketController extends Controller
      * @param  \App\Models\Piket  $piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Piket $piket)
+    public function destroy($id)
     {
-        //
+        Piket::find($id)->delete();
+        return redirect()->route('piket.index')->with('notifberhasil', 'Berhasil! Data Berhasil Dihapus!');
     }
 }

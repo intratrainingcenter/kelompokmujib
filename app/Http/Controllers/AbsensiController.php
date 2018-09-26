@@ -90,9 +90,12 @@ class AbsensiController extends Controller
      * @param  \App\Models\Absensi  $absensi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Absensi $absensi)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Absensi::find($id);
+        $data->keterangan = $request->keterangan;
+        $data->save();
+        return redirect()->route('absensi.index')->with('notifberhasil', 'Berhasil! Data Berhasil Diedit');
     }
 
     /**

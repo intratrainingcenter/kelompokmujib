@@ -60,6 +60,7 @@
                     <td>{{date('d F Y',strtotime($item->created_at))}}</td>                    
                     <td>
                       <button class="btn btn-info" data-toggle="modal" data-target="#modaldetil{{$item->id}}">Detil</button>
+                      <button class="btn btn-warning" data-toggle="modal" data-target="#modaledit{{$item->id}}">Edit</button>
                       <button class="btn btn-danger" data-toggle="modal" data-target="#modaldel{{$item->id}}">Hapus</button>
                     </td>
                   </tr>
@@ -134,6 +135,79 @@
         </div>
       </div>
     </div>
+
+    {{-- Modal Edit --}}
+    <div class="modal fade" id="modaledit{{$item->id}}" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+          {!! Form::open(['route' => ['absensi.update',$item->id],'method' => 'patch']) !!}
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Edit</h4>
+            </div>
+                <div class="form-group col-md-12">
+                  <div class="col-md-4">
+                    <label>NIS</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p id="nis">{{$item->nis}}</p>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <div class="col-md-4">
+                    <label>Nama</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p id="nama">{{$item->get_siswa->nama}}</p>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="col-md-4">
+                      <label>Jenis Kelamin</label>
+                    </div>
+                    <div class="col-md-8">
+                      <p id="jk">{{$item->get_siswa->jenis_kelamin}}</p>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="col-md-4">
+                      <label>Tanggal</label>
+                    </div>
+                    <div class="col-md-8">
+                      <p id="tgl">{{date('d F Y', strtotime($item->created_at))}}</p>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="col-md-4">
+                      <label>Tidak Masuk Karena</label>
+                    </div>
+                    <div class="col-md-8">
+                      <select name="keterangan" id="keterangan" class="form-control">
+                          @if($item->keterangan == 'Ijin')
+                          <option value="Sakit">Sakit</option>
+                          <option value="Ijin" selected>Ijin</option>
+                          <option value="Alpa">Alpa</option>
+                        @elseif($item->keterangan == 'Alpa')
+                          <option value="Sakit">Sakit</option>
+                          <option value="Ijin">Ijin</option>
+                          <option value="Alpa" selected>Alpa</option>
+                        @else
+                          <option value="Sakit" selected>Sakit</option>
+                          <option value="Ijin">Ijin</option>
+                          <option value="Alpa">Alpa</option>  
+                        @endif
+                      </select>
+                    </div>
+                </div>
+            <div class="modal-footer">
+              <button class="btn btn-danger" data-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            {!! Form::close() !!}
+          </div>
+        </div>
+      </div>
 
     {{-- Modal Delete --}}
     <div class="modal fade" id="modaldel{{$item->id}}" role="dialog">

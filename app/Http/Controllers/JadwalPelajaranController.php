@@ -17,7 +17,7 @@ class JadwalPelajaranController extends Controller
      */
     public function index()
     {
-        $data = Jadwal::orderBy('id', 'desc')->with('kelas')->with('mapel')->get();
+        $data = Jadwal::orderBy('id', 'desc')->with('get_kelas')->with('get_mapel')->get();
         $no = 1;
         $kelas = Kelas::all();
 
@@ -71,7 +71,7 @@ class JadwalPelajaranController extends Controller
     public function show($id)
     {
         
-        $data = Jadwal::where('kode_kelas', $id)->with('kelas')->with('mapel')->get();
+        $data = Jadwal::where('kode_kelas', $id)->with('get_kelas')->with('get_mapel')->get();
         $no = 1;
         return view('page.jadwal.show', compact('data', 'no'));
     }

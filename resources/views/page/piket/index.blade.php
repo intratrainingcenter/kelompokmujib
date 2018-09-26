@@ -53,8 +53,8 @@
                   @foreach ($data as $item)
                   <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$item->kelas->nama_kelas}}</td>
-                    <td>{{$item->siswa->nama}}</td>
+                    <td>{{$item->get_kelas->nama_kelas}}</td>
+                    <td>{{$item->get_siswa->nama}}</td>
                     <td>{{$item->hari}}</td>
                     <td>
                       <a href="{{route('piket.edit', ['id' => $item->id])}}" class="btn btn-warning">Edit</a>
@@ -95,8 +95,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>{{$item->kelas->nama_kelas}}</td>
-                  <td>{{$item->siswa->nama}}</td>
+                  <td>{{$item->get_kelas->nama_kelas}}</td>
+                  <td>{{$item->get_siswa->nama}}</td>
                   <td>{{$item->hari}}</td>
                 </tr>
               </tbody>
