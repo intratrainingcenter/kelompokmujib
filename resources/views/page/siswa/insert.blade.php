@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
           {{Form::label('kelas', 'Kelas')}}
-          {{Form::select('kelas', $kelas, null, ['class' => 'form-control'])}}
+          {{Form::select('kelas', $class, null, ['class' => 'form-control'])}}
         </div>
 
         {{Form::submit('Simpan', ['class' => 'btn btn-primary pull-right'])}}

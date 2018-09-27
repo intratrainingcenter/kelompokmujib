@@ -19,15 +19,7 @@ Route::resource('siswa', 'SiswaController');
 
 Route::resource('kelas', 'KelasController');
 
-
-Route::get('/mapel', function () {
-    return view('page.mapel.index');
-});
-
-Route::get('/piket', function () {
-    return view('page.piket.index');
-});
-
-Route::get('/absen', function () {
-    return view('page.absen.index');
-});
+Route::resource('mapel', 'MapelController');
+Route::resource('jadwal', 'JadwalPelajaranController');
+Route::resource('piket', 'PiketController');
+Route::resource('absensi', 'AbsensiController');
