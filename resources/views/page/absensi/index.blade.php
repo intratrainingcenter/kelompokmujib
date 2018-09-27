@@ -55,7 +55,7 @@
                   <tr>
                     <td>{{$no++}}.</td>
                     <td>{{$item->nis}}</td>
-                    <td>{{$item->get_siswa->nama}}</td>
+                    <td>{{@$item->get_siswa->nama}}</td>
                     <td>{{$item->keterangan}}</td>
                     <td>{{date('d F Y',strtotime($item->created_at))}}</td>                    
                     <td>
@@ -102,7 +102,7 @@
                   <label>Nama</label>
                 </div>
                 <div class="col-md-8">
-                  <p id="nama">{{$item->get_siswa->nama}}</p>
+                  <p id="nama">{{@$item->get_siswa->nama}}</p>
                 </div>
               </div>
               <div class="form-group col-md-12">
@@ -110,7 +110,7 @@
                     <label>Jenis Kelamin</label>
                   </div>
                   <div class="col-md-8">
-                    <p id="jk">{{$item->get_siswa->jenis_kelamin}}</p>
+                    <p id="jk">{{@$item->get_siswa->jenis_kelamin}}</p>
                   </div>
               </div>
               <div class="form-group col-md-12">
@@ -159,7 +159,7 @@
                     <label>Nama</label>
                   </div>
                   <div class="col-md-8">
-                    <p id="nama">{{$item->get_siswa->nama}}</p>
+                    <p id="nama">{{@$item->get_siswa->nama}}</p>
                   </div>
                 </div>
                 <div class="form-group col-md-12">
@@ -167,7 +167,7 @@
                       <label>Jenis Kelamin</label>
                     </div>
                     <div class="col-md-8">
-                      <p id="jk">{{$item->get_siswa->jenis_kelamin}}</p>
+                      <p id="jk">{{@$item->get_siswa->jenis_kelamin}}</p>
                     </div>
                 </div>
                 <div class="form-group col-md-12">
@@ -231,7 +231,7 @@
               <tbody>
                 <tr>
                   <td>{{$item->nis}}</td>
-                  <td>{{$item->get_siswa->nama}}</td>
+                  <td>{{@$item->get_siswa->nama}}</td>
                   <td>{{$item->keterangan}}</td>
                   <td>{{date('d F Y',strtotime($item->created_at))}}</td>
                 </tr>
