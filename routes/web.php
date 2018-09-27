@@ -12,6 +12,9 @@
 */
 
 Route::get('/','DashboardController@index');
+Route::get('/', function () {
+    return view('layout.Home');
+});
 
 Route::resource('siswa', 'SiswaController');
 Route::resource('kelas', 'KelasController');
