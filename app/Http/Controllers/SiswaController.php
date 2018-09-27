@@ -30,25 +30,30 @@ class SiswaController extends Controller
     public function create()
     {
       $tbl_student = Siswa::all()->last();
-      $tbl_kelas = Kelas::all();
+      $tbl_class = Kelas::all();
+      // dd(count($tbl_class) == 0 , $tbl_class);
+      $class = [];
+      if(count($tbl_class) != 0){
+        foreach ($tbl_class as $data) {
+          $class[$data->kode_kelas]= $data->nama_kelas;
+        }
+      }else{
+        return redirect()->route('siswa.index')->with('notifwarning', 'Tidak Ada Data Kelas!, Harap Inputkan Data Kelas Terlebih Dahulu!');
+      }
 
       $date = substr(Carbon::now()->format('Ydmi'),2);
-      $id = $tbl_student->id + 1;
       if($tbl_student == NULL){
         $new_code = $date.'01' ;
       }else if($tbl_student->id < 9){
+        $id = $tbl_student->id + 1;
         $new_code = $date.'0'.$id ;
       }else {
         $new_code = $date.$id ;
       }
       $nis = $new_code;
 
-      $kelas = [];
-      foreach ($tbl_kelas as $data) {
-        $kelas[$data->kode_kelas]= $data->nama_kelas;
-      }
-      // dd($kelas);
-      return view('page.siswa.insert', compact('nis', 'kelas'));
+      // dd($class);
+      return view('page.siswa.insert', compact('nis', 'class'));
     }
 
     /**
@@ -96,14 +101,14 @@ class SiswaController extends Controller
     public function edit($id)
     {
       $table = Siswa::where('id', $id)->first();
-      $tbl_kelas = Kelas::all();
+      $tbl_class = Kelas::all();
       // dd($table);
-      $kelas = [];
-      foreach ($tbl_kelas as $data) {
-        $kelas[$data->kode_kelas]= $data->nama_kelas;
+      $class = [];
+      foreach ($tbl_class as $data) {
+        $class[$data->kode_kelas]= $data->nama_kelas;
       }
 
-      return view('page.siswa.edit', compact('table', 'kelas'));
+      return view('page.siswa.edit', compact('table', 'class'));
     }
 
     /**
