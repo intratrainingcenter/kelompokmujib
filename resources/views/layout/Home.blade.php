@@ -22,7 +22,7 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <li>
-              <a href="/"><b>Masuk</b></i></a>
+              <a href="{{route('dashboard.index')}}"><b>Masuk</b></i></a>
             </li>
             <li>
               <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
@@ -226,7 +226,7 @@
     <div class="content-wrapper wallpeper" style="margin-left: 0px;">
       <section class="content">
         <center>
-          <a href="/"> <button type="button" name="button" class="btn-masuk"> MASUK </button></a>
+          <a href="{{route('dashboard.index')}}"> <button type="button" name="button" class="btn-masuk"> MASUK </button></a>
         </center>
       </section>
       <!-- /.content -->

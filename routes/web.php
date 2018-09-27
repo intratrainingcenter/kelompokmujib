@@ -10,12 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/','DashboardController@index');
 Route::get('/', function () {
     return view('layout.Home');
 });
-
+Route::resource('dashboard','DashboardController');
 Route::resource('siswa', 'SiswaController');
 Route::resource('kelas', 'KelasController');
 Route::resource('mapel', 'MapelController');
