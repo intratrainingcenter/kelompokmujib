@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layout.index');
-});
+Route::get('/','DashboardController@index');
 
 Route::resource('siswa', 'SiswaController');
-
 Route::resource('kelas', 'KelasController');
-
 Route::resource('mapel', 'MapelController');
 Route::resource('jadwal', 'JadwalPelajaranController');
 Route::resource('piket', 'PiketController');
