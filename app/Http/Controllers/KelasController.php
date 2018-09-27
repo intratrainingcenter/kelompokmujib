@@ -16,12 +16,12 @@ class KelasController extends Controller
      */
     public function index()
     {
-      $tbl_kelas = Kelas::all();
-      foreach ($tbl_kelas as $dat_kelas) {
+      $tbl_class = Kelas::all();
+      foreach ($tbl_class as $dat_kelas) {
         $conSiswa[$dat_kelas->id] = Siswa::where('kode_kelas', $dat_kelas->kode_kelas)->count();
       }
       // dd($conSiswa[9]);
-      $table = $tbl_kelas;
+      $table = $tbl_class;
 
       return view('page.kelas.index', compact('table', 'conSiswa'));
     }
@@ -35,10 +35,10 @@ class KelasController extends Controller
     {
       $table = Kelas::all()->last();
       $date = substr(Carbon::now()->format('Ydi'),2);
-      $id = $table->id + 1;
       if($table == NULL){
         $new_kode = 'KD'.$date.'01' ;
       }else if($table->id < 9){
+        $id = $table->id + 1;
         $new_kode = 'KD'.$date.'0'.$id ;
       }else {
         $new_kode = 'KD'.$date.$id ;
