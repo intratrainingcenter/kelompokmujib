@@ -54,7 +54,7 @@ class AbsensiController extends Controller
     
             return redirect()->route('absensi.index')->with('notifberhasil', 'Berhasil! Data Berhasil Ditambahkan!');
         } else {
-            return redirect()->route('absensi.index')->with('notifgagal', 'Gagal! Siswa Sudah Diabsen!');
+            return redirect()->route('absensi.index')->with('notifgagal', 'Gagal! Siswa Sudah Diabsen Hari Ini!');
         }
         
     }
