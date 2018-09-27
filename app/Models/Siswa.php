@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswa extends Model
 {
-    protected $table = 'siswa';
+  public $table = 'siswas';
+
+  public function get_kelas(){
+    return $this->belongsTo('App\Models\Kelas','kode_kelas','kode_kelas');
+  }
 }

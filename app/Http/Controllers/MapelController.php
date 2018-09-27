@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mapel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MapelController extends Controller
 {
@@ -14,7 +15,10 @@ class MapelController extends Controller
      */
     public function index()
     {
-        //
+        $data = Mapel::all()->sortByDesc('id');
+        $no = 1;
+
+        return view('page.mapel.index', compact('data', 'no'));
     }
 
     /**
@@ -24,7 +28,7 @@ class MapelController extends Controller
      */
     public function create()
     {
-        //
+        return view('page.mapel.create');
     }
 
     /**
@@ -35,16 +39,26 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $check = Mapel::where('kode_mapel', $request->kode_mapel)->doesntExist();
+        if ($check) {
+            $data = new Mapel;
+            $data->kode_mapel = $request->kode_mapel;
+            $data->nama_mapel = $request->nama_mapel;
+            $data->save();
+            return redirect()->route('mapel.index')->with('notifberhasil', 'Berhasil! Data Berhasil Ditambahkan');
+        } else {
+            return redirect()->route('mapel.index')->with('notifgagal', 'Gagal! Kode Mata Pelajaran Sudah Ada');
+        }
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mapel  $mapel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Mapel $mapel)
+    public function show($id)
     {
         //
     }
@@ -52,34 +66,42 @@ class MapelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mapel  $mapel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mapel $mapel)
+    public function edit($id)
     {
-        //
+        $data = Mapel::where('id', $id)->first();
+
+        return view('page.mapel.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mapel  $mapel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mapel $mapel)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Mapel::where('id', $id)->first();
+        $data->kode_mapel = $request->kode_mapel;
+        $data->nama_mapel = $request->nama_mapel;
+        $data->save();
+        return redirect()->route('mapel.index')->with('notifberhasil', 'Berhasil! Data Berhasil Diedit!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mapel  $mapel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mapel $mapel)
+    public function destroy($id)
     {
-        //
+        $data = Mapel::find($id);
+        $data->delete();
+        return redirect()->route('mapel.index')->with('notifberhasil', 'Berhasil! Data Berhasil Dihapus!');
     }
 }

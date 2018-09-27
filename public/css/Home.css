@@ -1,0 +1,21 @@
+.wallpeper {
+  background-image: url("../Sekolah.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /* opacity: 0.5; */
+}
+
+.btn-masuk {
+  background:#00a65a;
+  color:white;
+  border-top:0;
+  border-left:0;
+  border-right:0;
+  border-bottom:5px solid #008d4c;
+  border-radius: 4px;
+  padding:10px 20px;
+  text-decoration:none;
+  font-family:sans-serif;
+  font-size:20pt;
+  margin-top: 250px;
+}

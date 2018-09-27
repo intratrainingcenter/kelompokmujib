@@ -10,27 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('layout.index');
+    return view('layout.Home');
 });
-
-Route::get('/siswa', function () {
-    return view('page.siswa.index');
-});
-
-Route::get('/kelas', function () {
-    return view('page.kelas.index');
-});
-
-Route::get('/mapel', function () {
-    return view('page.mapel.index');
-});
-
-Route::get('/piket', function () {
-    return view('page.piket.index');
-});
-
-Route::get('/absen', function () {
-    return view('page.absen.index');
-});
+Route::resource('dashboard','DashboardController');
+Route::resource('siswa', 'SiswaController');
+Route::resource('kelas', 'KelasController');
+Route::resource('mapel', 'MapelController');
+Route::resource('jadwal', 'JadwalPelajaranController');
+Route::resource('piket', 'PiketController');
+Route::resource('absensi', 'AbsensiController');

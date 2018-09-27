@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use App\Models\Siswa;
+Use App\Models\Kelas;
+Use App\Models\Mapel;
 
-class Testresourcecontroller extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,10 @@ class Testresourcecontroller extends Controller
      */
     public function index()
     {
-        return view('tes');
+        $all_siswa = Siswa::count();
+        $all_kelas = Kelas::count();
+        $all_mapel = Mapel::count();
+        return view('layout.index', compact('all_siswa', 'all_kelas', 'all_mapel'));
     }
 
     /**
